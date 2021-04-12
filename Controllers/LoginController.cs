@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Team4NetCoreCAProject.Controllers
 {
-    public class LoginController : Controller
+    public class LogInController : Controller
 
     /*privately readonly Database db;
 

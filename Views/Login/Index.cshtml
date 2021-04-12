@@ -1,0 +1,80 @@
+﻿@*@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@section Scripts
+{
+    <script src="~/js/login/index.js"></script>"
+}
+
+<style>
+
+    table {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .inputkey {
+        padding: 14px 20px;
+    }
+
+    #err_msg {
+        color: red;
+        font-weight: bold;
+        padding: 10px;
+    }
+
+    .container {
+        width: 100%;
+        background: #fff;
+    }
+</style>
+
+<form id="form" action="/Login/Authenticate" method="POST">
+    <table style="width:100%; position:center">
+        <tr>
+            <th rowspan="5">
+                <div class="col-sm-5">
+                    <figure style="margin-bottom: 50px; text-align: left;"><img src="~/images/login-vector.png" style="vertical-align:middle; margin-top: 20px; margin-left: 50px; margin-left:0px; height:200px;" /></figure>
+                </div>
+            </th>
+            <td class="inputkey">
+
+                <div style="position:relative; margin-bottom: 25px; overflow: hidden; display: block;">
+
+                    <figure> <img src="~/images/UserIcon.png" /></figure>
+            </td>
+            <td>
+                <div style="position:relative; margin-bottom: 25px; overflow: hidden; display: block; ">
+                    <input id="username" type="text" name="username" class="form-control" value=@ViewData["lasttypedusername"] style="width:100%; display: block; padding: 6px 15px; box-sizing: border-box;" />
+            </td>
+        </tr>
+        <tr>
+            <td class="inputkey">
+                <div style="position:relative; margin-bottom: 25px; overflow: hidden; display: block; ">
+                    <figure> <img src="~/images/PasswordIcon.png" /></figure>
+            </td>
+            <td>
+                <div style="position:relative; margin-bottom: 25px; overflow: hidden; display: block; ">
+                    <input id="password" type="password" name="password" class="form-control" style="width:100%; display: block; padding: 6px 15px; box-sizing: border-box;" />
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="position:center">
+                <div style="position:relative; margin-bottom: 25px; overflow: hidden; display: block; align-items:center">
+                    <input type="Submit" value="Log In" class="btn btn-primary" style="padding:15px 39px; display: inline-block; width:100%; height:50%; vertical-align" />
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="position:center" align="center">
+                <div style="position:relative; margin-bottom: 25px; overflow: hidden; display: block; align-items:center">
+                    <input type="Submit" value="Register" class="btn btn-primary" style="padding:15px 39px; display: inline-block; width:100%; height:50%; vertical-align" />
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <div id="err_msg">@ViewData["errMsg"]</div>
+            </td>
+        </tr>
+
+    </table>
+</form>
