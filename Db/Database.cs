@@ -18,8 +18,7 @@ namespace Team4NetCoreCAProject.Db
         protected override void OnModelCreating(ModelBuilder model)
         {
             model.Entity<CartDetail>().HasKey(x => new { x.CartId, x.ProductId });
-            model.Entity<PurchaseDetail>().HasKey(x => new { x.PurchaseId, x.ProductId });
-            model.Entity<ActivationKey>().HasIndex(x => x.PdtAtvKey).IsUnique();
+            
         }
 
         public DbSet<Session> Sessions { get; set; }
@@ -27,8 +26,6 @@ namespace Team4NetCoreCAProject.Db
         public DbSet<Product> Products { get; set; }
         public DbSet<Cart> Carts { get; set; }
         public DbSet<CartDetail> CartDetails { get; set; }
-        public DbSet<Purchase> Purchases { get; set;}
-        public DbSet<PurchaseDetail> PurchaseDetails { get; set; }
-        public DbSet<ActivationKey> ActivationKeys { get; set; }
+        
     }
 }

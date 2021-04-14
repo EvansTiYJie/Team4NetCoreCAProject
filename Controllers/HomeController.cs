@@ -46,13 +46,14 @@ namespace Team4NetCoreCAProject.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
+        
         [HttpPost]
         public IActionResult UpdateCart([FromBody] UpdateCartInput input)
         {
             Session session = db.Sessions.FirstOrDefault(x => x.Id == Request.Cookies["sessionId"]);
 
             //check whether the user has a cart before
-            Cart existingCart = db.Carts.FirstOrDefault(x => (x.UserId == session.UserId));
+            Cart existingCart = db.Carts.FirstOrDefault(x => (x.User.Id == session.User.Id));
 
             // <1> don't have cart(never shop before)
             if (existingCart == null)
@@ -61,7 +62,7 @@ namespace Team4NetCoreCAProject.Controllers
                 Cart newCart = new Cart
                 {
                     Id = Guid.NewGuid().ToString(),
-                    UserId = session.UserId  //set newCart.UserId = session.UserId
+                    UserId = session.User.Id  //set newCart.UserId = session.UserId
                 };
 
                 db.Add(newCart);
@@ -73,7 +74,7 @@ namespace Team4NetCoreCAProject.Controllers
                 {
                     CartId = newCart.Id, //Id of newCart
                     ProductId = int.Parse(input.ProductId),
-                    UserId = session.UserId,
+                    UserId = session.User.Id,
                     Quantity = 1 //assume add 1 at each time
                 };
 
@@ -100,7 +101,7 @@ namespace Team4NetCoreCAProject.Controllers
                     {
                         CartId = existingCart.Id,
                         ProductId = int.Parse(input.ProductId),
-                        UserId = session.UserId,
+                        UserId = session.User.Id,
                         Quantity = 1
                     };
 
@@ -126,7 +127,6 @@ namespace Team4NetCoreCAProject.Controllers
 
             return Json(new { status = "success", cartNumber = ViewData["numberOfProductsInCart"].ToString() }); //?
 
-        
         }
     }
 }

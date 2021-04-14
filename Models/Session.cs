@@ -13,12 +13,8 @@ namespace Team4NetCoreCAProject.Models
         public string Id { get; set; }
 
         [Required]
-        public long TimeStamp { get; set; } //?
-
-        [Required]
-        [MaxLength]
-        public string UserId{ get; set; }
-
+        public long TimeStamp { get; set; } //?       
+        
         public virtual User User { get; set; }
 
     }
