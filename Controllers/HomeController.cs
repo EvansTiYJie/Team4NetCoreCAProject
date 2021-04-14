@@ -126,6 +126,7 @@ namespace Team4NetCoreCAProject.Controllers
 
             return Json(new { status = "success", cartNumber = ViewData["numberOfProductsInCart"].ToString() }); //?
 
+        
         }
     }
 }
